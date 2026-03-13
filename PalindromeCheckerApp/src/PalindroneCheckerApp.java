@@ -2,18 +2,23 @@ public class PalindroneCheckerApp {
 
     public static void main(String[] args) {
 
+        // Original string
         String input = "madam";
-        boolean isPalindrome = true;
 
-        for (int i = 0; i < input.length() / 2; i++) {
+        // Variable to store reversed string
+        String reversed = "";
 
-            if (input.charAt(i) != input.charAt(input.length() - 1 - i)) {
-                isPalindrome = false;
-                break;
-            }
+        // Iterate from last character to first
+        for (int i = input.length() - 1; i >= 0; i--) {
+            reversed = reversed + input.charAt(i);
         }
 
+        // Compare original and reversed string
+        boolean isPalindrome = input.equals(reversed);
+
+        // Print result
         System.out.println("Input text: " + input);
+        System.out.println("Reversed text: " + reversed);
         System.out.println("Is it a Palindrome?: " + isPalindrome);
     }
 }
