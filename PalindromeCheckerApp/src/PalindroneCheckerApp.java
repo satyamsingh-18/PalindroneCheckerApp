@@ -5,30 +5,26 @@ public class PalindroneCheckerApp {
     public static void main(String[] args) {
 
         // Define the input string
-        String input = "civic";
+        String input = "refer";
 
-        // Create Queue (FIFO)
-        Queue<Character> queue = new LinkedList<>();
+        // Create a Deque
+        Deque<Character> deque = new ArrayDeque<>();
 
-        // Create Stack (LIFO)
-        Stack<Character> stack = new Stack<>();
-
-        // Insert each character into both queue and stack
+        // Add each character to deque
         for (char c : input.toCharArray()) {
-            queue.add(c);     // enqueue
-            stack.push(c);    // push
+            deque.addLast(c);
         }
 
-        // Flag to track palindrome
+        // Flag for palindrome
         boolean isPalindrome = true;
 
-        // Compare characters
-        while (!queue.isEmpty()) {
+        // Compare first and last characters
+        while (deque.size() > 1) {
 
-            char qChar = queue.remove(); // dequeue
-            char sChar = stack.pop();    // pop
+            char first = deque.removeFirst();
+            char last = deque.removeLast();
 
-            if (qChar != sChar) {
+            if (first != last) {
                 isPalindrome = false;
                 break;
             }
