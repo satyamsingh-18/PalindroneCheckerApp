@@ -1,22 +1,39 @@
-public class UseCase10PalindromeCheckerApp {
+import java.util.Stack;
+
+public class UseCase12PalindromeCheckerApp {
 
     public static void main(String[] args) {
+        PalindromeStrategy strategy = new StackStrategy();
 
-        String input = "A man a plan a canal Panama";
+        String input = "level";
 
-        // Normalize string (remove spaces & lowercase)
-        String normalized = input.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+        boolean isPalindrome = strategy.check(input);
 
-        boolean isPalindrome = true;
+        System.out.println("Input : " + input);
+        System.out.println("\nIs Palindrome? : " + isPalindrome);
+    }
+}
 
-        for (int i = 0; i < normalized.length() / 2; i++) {
-            if (normalized.charAt(i) != normalized.charAt(normalized.length() - 1 - i)) {
-                isPalindrome = false;
-                break;
+interface PalindromeStrategy {
+    boolean check(String input);
+}
+
+class StackStrategy implements PalindromeStrategy {
+
+    @Override
+    public boolean check(String input) {
+        java.util.Stack<Character> stack = new java.util.Stack<>();
+
+        for (char c : input.toCharArray()) {
+            stack.push(c);
+        }
+
+        for (char c : input.toCharArray()) {
+            if (stack.pop() != c) {
+                return false;
             }
         }
 
-        System.out.println("Input : " + input);
-        System.out.println("Is Palindrome? : " + isPalindrome);
+        return true;
     }
 }
