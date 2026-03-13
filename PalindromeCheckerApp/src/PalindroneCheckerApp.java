@@ -4,25 +4,25 @@ public class PalindroneCheckerApp {
 
     public static void main(String[] args) {
 
-        // Define the input string
-        String input = "refer";
+        // Define input string
+        String input = "level";
 
-        // Create a Deque
-        Deque<Character> deque = new ArrayDeque<>();
+        // Create LinkedList
+        LinkedList<Character> list = new LinkedList<>();
 
-        // Add each character to deque
+        // Add characters to LinkedList
         for (char c : input.toCharArray()) {
-            deque.addLast(c);
+            list.add(c);
         }
 
-        // Flag for palindrome
+        // Flag to track palindrome
         boolean isPalindrome = true;
 
         // Compare first and last characters
-        while (deque.size() > 1) {
+        while (list.size() > 1) {
 
-            char first = deque.removeFirst();
-            char last = deque.removeLast();
+            char first = list.removeFirst();
+            char last = list.removeLast();
 
             if (first != last) {
                 isPalindrome = false;
@@ -30,9 +30,8 @@ public class PalindroneCheckerApp {
             }
         }
 
-        // Output
+        // Print result
         System.out.println("Input : " + input);
         System.out.println("Is Palindrome? : " + isPalindrome);
     }
 }
-
